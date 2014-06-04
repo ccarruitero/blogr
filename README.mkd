@@ -6,4 +6,6 @@ you need ruby and bundler
 
 ## Use
 bundle
+rake db:migrate
+rake db:seed
 rails s
