@@ -1,2 +1,9 @@
 # blogr
 a simple blog build with rails
+
+## Requirements
+you need ruby and bundler
+
+## Use
+bundle
+rails s
