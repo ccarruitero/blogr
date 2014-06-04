@@ -5,7 +5,9 @@ a simple blog build with rails
 you need ruby and bundler
 
 ## Use
+```
 bundle
 rake db:migrate
 rake db:seed
 rails s
+```
