@@ -1,0 +1,7 @@
+<% @comments.each do |comment| %>
+  <div class="comment">
+    <p><%= comment.body %></p>
+    <p><%= comment.commentable_type %></p>
+    <p><%= comment.commentable.title %></p>
+  </div>
+<% end %>
