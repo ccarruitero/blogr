@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604031956) do
+ActiveRecord::Schema.define(version: 20140604040904) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -20,13 +20,21 @@ ActiveRecord::Schema.define(version: 20140604031956) do
     t.datetime "updated_at"
   end
 
+  create_table "books", force: true do |t|
+    t.string   "title"
+    t.string   "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "blog_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
   end
 
-  add_index "comments", ["blog_id"], name: "index_comments_on_blog_id"
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
 
 end
