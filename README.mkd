@@ -1,0 +1,2 @@
+# blogr
+a simple blog build with rails
