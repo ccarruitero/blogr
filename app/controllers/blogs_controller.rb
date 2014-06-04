@@ -1,7 +1,11 @@
 class BlogsController < ApplicationController
-  before_action :set_blog
+  before_action :set_blog, except: [:new]
 
   def show
+  end
+
+  def new
+    @blog = Blog.new
   end
 
   def get_comments
