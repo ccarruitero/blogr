@@ -1,4 +1,4 @@
-class BlogController < ApplicationController
+class BlogsController < ApplicationController
   before_action :set_blog
 
   def show
