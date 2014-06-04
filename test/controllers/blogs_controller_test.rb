@@ -11,8 +11,24 @@ class BlogsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_create
+    assert_difference('Blog.count') do
+      post :create, blog: { title: 'a new blog', body: 'a new body' }
+    end
+  end
+
   def test_show
     get :show, id: @blog
     assert_response :success
+  end
+
+  def test_edit
+    get :edit, id: @blog
+    assert_response :success
+  end
+
+  def test_update
+    put :update, id: @blog, blog: { title: 'change title' }
+    assert_redirected_to blog_path(assigns(:blog))
   end
 end
