@@ -11,13 +11,18 @@ class CommentsController < ApplicationController
   end
 
   def new
+    @comment = @parent.comments.new
   end
 
   def create
     @comment = @parent.comments.new(comment_params)
 
     if @comment.save
-      redirect_to blog_comments_path(@comment)
+      if @parent.class.name == "Blog"
+        redirect_to blog_comments_path
+      else
+        redirect_to book_comments_path
+      end
     else
       render action: 'new'
     end
@@ -30,7 +35,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       if @parent.class.name == "Blog"
         redirect_to blog_comments_path
-      elsif @parent.class.name == "Book"
+      else
         redirect_to book_comments_path
       end
     else
