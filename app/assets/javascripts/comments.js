@@ -14,6 +14,7 @@ $(function() {
         for (var i=0; i < data.length; i++) {
           comments.renderComment(data[i]);
         }
+        $('#comments-btn').off('click');
       }).fail(function() {
         console.log('oops and error was ocurred');
       });
