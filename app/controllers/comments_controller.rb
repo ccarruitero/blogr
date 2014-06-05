@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
   before_action :set_parent
-  before_action :set_comment, except: [:new, :create]
+  before_action :set_comment, except: [:new, :create, :index]
 
   def index
-    @comments = Comment.includes(:commentable).all
+    if @parent.nil?
+      @comments = Comment.includes(:commentable).all
+    else
+      @comments = @parent.comments.includes(:commentable).all
+    end
   end
 
   def new
