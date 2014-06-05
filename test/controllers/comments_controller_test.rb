@@ -30,4 +30,10 @@ class CommentsControllerTest < ActionController::TestCase
         comment: { body: 'change body' }
     assert_redirected_to blog_comments_path
   end
+
+  def test_destroy
+    assert_difference('Comment.count', -1) do
+      delete :destroy, id: @comment, blog_id: @blog.id
+    end
+  end
 end

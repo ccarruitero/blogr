@@ -31,4 +31,10 @@ class BlogsControllerTest < ActionController::TestCase
     put :update, id: @blog, blog: { title: 'change title' }
     assert_redirected_to blog_path(assigns(:blog))
   end
+
+  def test_destroy
+    assert_difference('Blog.count', -1) do
+      delete :destroy, id: @blog
+    end
+  end
 end

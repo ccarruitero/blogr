@@ -31,4 +31,10 @@ class BooksControllerTest < ActionController::TestCase
     put :update, id: @book, book: { title: 'change title' }
     assert_redirected_to book_path(assigns(:book))
   end
+
+  def test_destroy
+    assert_difference('Book.count', -1) do
+      delete :destroy, id: @book
+    end
+  end
 end
