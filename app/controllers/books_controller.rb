@@ -29,6 +29,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    @book.destroy
+    redirect_to books_url
+  end
+
   private
 
   def set_book

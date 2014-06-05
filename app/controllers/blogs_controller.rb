@@ -37,6 +37,11 @@ class BlogsController < ApplicationController
     end
   end
 
+  def destroy
+    @blog.destroy
+    redirect_to blogs_url
+  end
+
   private
 
   def set_blog

@@ -18,11 +18,7 @@ class CommentsController < ApplicationController
     @comment = @parent.comments.new(comment_params)
 
     if @comment.save
-      if @parent.class.name == "Blog"
-        redirect_to blog_comments_path
-      else
-        redirect_to book_comments_path
-      end
+      redirect_to_parent
     else
       render action: 'new'
     end
@@ -33,17 +29,26 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      if @parent.class.name == "Blog"
-        redirect_to blog_comments_path
-      else
-        redirect_to book_comments_path
-      end
+      redirect_to_parent
     else
       render action: 'edit'
     end
   end
 
+  def destroy
+    @comment.destroy
+    redirect_to_parent
+  end
+
   private
+
+  def redirect_to_parent
+    if @parent.class.name == "Blog"
+      redirect_to blog_comments_path
+    else
+      redirect_to book_comments_path
+    end
+  end
 
   def set_comment
     @comment = @parent.comments.find(params[:id])
